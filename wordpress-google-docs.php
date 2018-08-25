@@ -3,9 +3,9 @@
 /**
  * Plugin Name: WordPress Google Docs
  * Description: Import Google Docs documents.
- * Version: 1.0.0
- * Author: bitorbit
- * Author URI: http://bitorbit.biz
+ * Version: 1.0.1
+ * Author: Zorca
+ * Author URI: https://zorca.org
  */
  
 if ( ! defined( 'ABSPATH' ) ) { 
@@ -93,22 +93,29 @@ add_action( 'wp_ajax_bt_wpgd_get_files', 'bt_wpgd_get_files' );
 
 // import file
 function bt_wpgd_import_file() {
-	
+
+    require 'HTMLPurifier/HTMLPurifier.standalone.php';
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('CSS.AllowedProperties', array());
+    $config->set('AutoFormat.RemoveEmpty', true);
+    $config->set('AutoFormat.RemoveEmpty.Predicate', [ 'table' => [] ]);
+    $config->set('AutoFormat.RemoveSpansWithoutAttributes', true);
+    $purifier = new HTMLPurifier($config);
+
 	$service = bt_wpgd_get_service();
 	
 	$id = $_POST['id'];
 	$name = $_POST['name'];
 	$type = $_POST['type'];
-	$clear_style = $_POST['clear_style'];
+	//$clear_style = $_POST['clear_style'];
 	
-	$content = $service->files->export( $id, 'text/html', array( 'alt' => 'media' ) );
+	$response = $service->files->export($id, 'text/html', array('alt' => 'media'));
+    $content = $response->getBody()->getContents();
+	$content = $purifier->purify($content);
 	
-	if ( $clear_style == 'true' ) {
-		$content = preg_replace( '/\sstyle=".*?"/i', '', $content );
-	}
-	
-	wp_insert_post( array( 'post_title' => $name, 'post_content' => $content, 'post_type' => $type ) );
-	
+	$post_id = wp_insert_post( array( 'post_title' => $name, 'post_content' => $content, 'post_type' => $type ) );
+    update_post_meta($post_id,'_google_docs_id', $id);
+
 	die();
 }
 add_action( 'wp_ajax_bt_wpgd_import_file', 'bt_wpgd_import_file' );
