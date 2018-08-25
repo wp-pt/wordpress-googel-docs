@@ -1,0 +1,81 @@
+.bt_wpgd_loader {
+	-webkit-animation: blinker 1s linear infinite;
+	        animation: blinker 1s linear infinite;
+	text-align: center;
+	background: -webkit-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,.05), rgba(0,0,0,0));
+	background: linear-gradient(to left,rgba(0,0,0,0),rgba(0,0,0,.05),rgba(0,0,0,0));
+	line-height: 3;
+}
+
+@-webkit-keyframes blinker {  
+	50% { opacity: 0.0; filter: alpha(opacity=0); }
+}
+
+@keyframes blinker {  
+	50% { opacity: 0.0; filter: alpha(opacity=0); }
+}
+
+.bt_wpgd_blinker {
+	-webkit-animation: blinker 1s linear infinite;
+	        animation: blinker 1s linear infinite;
+}
+
+.bt_wpgd_item {
+	cursor: pointer;
+}
+
+.bt_wpgd_item:hover {
+	background: rgba(0,0,0,.05);
+}
+
+.bt_wpgd_item i {
+	margin-right: .5em;
+}
+
+.bt_wpgd_item_selected {
+	background-color: rgba(0,0,0,.05);
+}
+
+.bt_wpgd_wrap {
+	border-bottom: 1px solid #ccc;
+}
+
+.bt_wpgd_output {
+	width: 100%;
+	border-spacing: 0px;
+}
+
+.bt_wpgd_output thead {
+	background: rgba(0,0,0,.05);
+}
+
+.bt_wpgd_output th, td {
+	padding: 4px 8px;
+}
+
+.bt_wpgd_output th {
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+	width: 50%;
+	cursor: pointer;
+}
+
+.bt_wpgd_output th:hover {
+	background: rgba(0,0,0,.05);
+}
+
+.bt_wpgd_toolbar {
+	margin-bottom: 8px;
+}
+
+.bt_wpgd_toolbar .bt_wpgd_home {
+	margin-right: 16px;
+}
+
+.bt_wpgd_toolbar .button {
+	vertical-align: middle;
+}
+
+.bt_wpgd_toolbar .bt_wpgd_message {
+	vertical-align: middle;
+}
