@@ -215,8 +215,8 @@ function bt_wpgd_import_callback() {
 			
 				<div class="bt_wpgd_toolbar">
 					<input type="submit" class="button bt_wpgd_home" value="<?php _e( 'Home', 'wordpress-google-docs' ); ?>"><label for="bt_wpgd_clear_inline_style"><input id="bt_wpgd_clear_inline_style" type="checkbox"><?php _e( 'Clear inline style', 'wordpress-google-docs' ); ?></label>
-					<input type="submit" class="button bt_wpgd_import_page" value="<?php _e( 'Import as page', 'wordpress-google-docs' ); ?>">
-					<input type="submit" class="button bt_wpgd_import_post" value="<?php _e( 'Import as post', 'wordpress-google-docs' ); ?>">
+                    <input type="submit" class="button bt_wpgd_import_post" value="<?php _e( 'Import as post', 'wordpress-google-docs' ); ?>">
+                    <input type="submit" class="button bt_wpgd_import_page" value="<?php _e( 'Import as page', 'wordpress-google-docs' ); ?>">
 					<span class="bt_wpgd_message"></span>
 				</div>
 				
