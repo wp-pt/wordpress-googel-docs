@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WordPress Google Docs
  * Description: Import Google Docs documents.
- * Version: 1.0.3
+ * Version: 1.0.5
  * Author: Zorca
  * Author URI: https://zorca.org
  */
@@ -37,8 +37,11 @@ function bt_wpgd_get_service() {
 	$options = get_option( 'bt_wpgd_settings' );
 	$client_id = isset( $options['client_id'] ) ? $options['client_id'] : '';
 	$client_secret = isset( $options['client_secret'] ) ? $options['client_secret'] : '';
-	$auth_code = isset( $options['auth_code'] ) ? $options['auth_code'] : '';
-	
+	if (WP_ENV === 'development') {
+        $auth_code = GOOGLE_DISK_AUTH_CODE;
+    } else {
+        $auth_code = isset( $options['auth_code'] ) ? $options['auth_code'] : '';
+    }
 	$access_token = get_option( 'bt_wpgd_access_token' );
 	$access_token = $access_token !== false ? $access_token : '';
 	
