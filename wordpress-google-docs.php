@@ -158,7 +158,7 @@ add_action( 'admin_menu', 'bt_wpgd_menu' );
  * Import menu
  */
 function bt_wpgd_import() {
-	add_menu_page( __( 'WordPress Google Docs', 'wordpress-google-docs' ), __( 'WP Google Docs', 'wordpress-google-docs' ), 'manage_options', 'bt_wpgd_import', 'bt_wpgd_import_callback' );
+	add_menu_page( __( 'WordPress Google Docs', 'wordpress-google-docs' ), __( 'WP Google Docs', 'wordpress-google-docs' ), 'publish_pages', 'bt_wpgd_import', 'bt_wpgd_import_callback' );
 }
 add_action( 'admin_menu', 'bt_wpgd_import' );
 
