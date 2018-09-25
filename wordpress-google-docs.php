@@ -150,7 +150,7 @@ add_action( 'admin_init', 'bt_wpgd_admin_init' );
  * Settings menu
  */
 function bt_wpgd_menu() {
-	add_options_page( __( 'WordPress Google Docs Settings', 'wordpress-google-docs' ), __( 'WP Google Docs', 'wordpress-google-docs' ), 'manage_options', 'bt_wpgd_settings', 'bt_wpgd_settings_callback' );
+	add_options_page( __( 'WordPress Google Docs Settings', 'wordpress-google-docs' ), __( 'WP Google Docs', 'wordpress-google-docs' ), 'publish_pages', 'bt_wpgd_settings', 'bt_wpgd_settings_callback' );
 }
 add_action( 'admin_menu', 'bt_wpgd_menu' );
 
