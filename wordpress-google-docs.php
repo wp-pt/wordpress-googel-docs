@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WordPress Google Docs
  * Description: Import Google Docs documents.
- * Version: 1.0.5
+ * Version: 1.0.8
  * Author: Zorca
  * Author URI: https://zorca.org
  */
