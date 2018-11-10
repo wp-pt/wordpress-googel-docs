@@ -3,7 +3,7 @@
 /**
  * Plugin Name: WordPress Google Docs
  * Description: Import Google Docs documents.
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: Zorca
  * Author URI: https://zorca.org
  */
@@ -98,11 +98,14 @@ add_action( 'wp_ajax_bt_wpgd_get_files', 'bt_wpgd_get_files' );
 function bt_wpgd_import_file() {
 
     require 'HTMLPurifier/HTMLPurifier.standalone.php';
+    require 'HTMLPurifier/extensions/HTMLPurifier_URIFilter_CleanGoogleDocsURL.php';
     $config = HTMLPurifier_Config::createDefault();
     $config->set('CSS.AllowedProperties', array());
     $config->set('AutoFormat.RemoveEmpty', true);
     $config->set('AutoFormat.RemoveEmpty.Predicate', [ 'table' => [] ]);
     $config->set('AutoFormat.RemoveSpansWithoutAttributes', true);
+	$uri = $config->getDefinition('URI');
+    $uri->addFilter(new HTMLPurifier_URIFilter_CleanGoogleDocsURL(), $config);
     $purifier = new HTMLPurifier($config);
 
 	$service = bt_wpgd_get_service();
