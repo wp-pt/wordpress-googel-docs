@@ -7,9 +7,6 @@ class HTMLPurifier_URIFilter_CleanGoogleDocsURL extends HTMLPurifier_URIFilter
 
     public function filter(&$uri, $config, $context)
     {
-        if (is_null($uri->host)) {
-            return false;
-        }
         if ($uri->scheme !== 'image') return true;
         parse_str($uri->query,$query_parsed);
         if ($query_parsed['q']) {
