@@ -7,7 +7,7 @@ class HTMLPurifier_URIFilter_CleanGoogleDocsURL extends HTMLPurifier_URIFilter
 
     public function filter(&$uri, $config, $context)
     {
-        if ($uri->scheme !== 'image') return true;
+        //if ($uri->scheme !== 'image') return true;
         parse_str($uri->query,$query_parsed);
         if ($query_parsed['q']) {
             $url_from_query = parse_url($query_parsed['q']);
@@ -15,8 +15,7 @@ class HTMLPurifier_URIFilter_CleanGoogleDocsURL extends HTMLPurifier_URIFilter
             $uri->scheme = $url_from_query['scheme'];
             $uri->path = $url_from_query['path'];
             $uri->query = $url_from_query['query'];
-            return true;
         }
-        return false;
+        return true;
     }
 }
