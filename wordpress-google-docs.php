@@ -116,8 +116,8 @@ function bt_wpgd_import_file() {
 	//$clear_style = $_POST['clear_style'];
 	
 	$response = $service->files->export($id, 'text/html', array('alt' => 'media'));
-    $content = $response->getBody()->getContents();
-	$content = $purifier->purify($content);
+	//$content = $response->getBody()->getContents();
+	$content = $purifier->purify($response);
 	
 	$post_id = wp_insert_post( array( 'post_title' => $name, 'post_content' => $content, 'post_type' => $type ) );
     update_post_meta($post_id,'_google_docs_id', $id);
